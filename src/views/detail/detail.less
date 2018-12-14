@@ -1,0 +1,227 @@
+
+#detail {
+	&-operation-bar {
+		position: fixed;
+		left: 0;
+		right: 0;
+		top: 0;
+		height: 50px;
+		padding: 0 8px;
+		z-index: 1000;
+	}
+	&-content {
+		&-file-display {
+			overflow: auto;
+			&-container {
+				min-height: 100%;
+			}
+			&-card-unknown {
+				width: 100%;
+				min-height: 50%;
+				background-color: #fff;
+				border-radius: 5px;
+				box-shadow: 0 1px 0 rgba(0,0,0,0.05) inset, 0 2px 0 rgba(0,0,0,0.1);
+			}
+			&-card-image {
+				width: 100%;
+				min-height: 50%;
+				line-height: 1;
+				background-color: #fff;
+				border-radius: 5px;
+				box-shadow: 0 1px 0 rgba(0,0,0,0.05) inset, 0 2px 0 rgba(0,0,0,0.1);
+			}
+			&-card-pdf {
+				width: 100%;
+				min-height: 50%;
+				background-color: #fff;
+				border-radius: 5px;
+				box-shadow: 0 1px 0 rgba(0,0,0,0.05) inset, 0 2px 0 rgba(0,0,0,0.1);
+			}
+			&-card-audio {
+				width: 100%;
+				min-height: 50%;
+				background-color: #fff;
+				border-radius: 5px;
+				box-shadow: 0 1px 0 rgba(0,0,0,0.05) inset, 0 2px 0 rgba(0,0,0,0.1);
+			}
+		}
+		&-file-side {
+			&-tags {
+				a {
+					font-size: 14px;
+					color: #008cff !important;
+				}
+				a:hover {
+					color: #00d1ff !important;
+					text-decoration: underline;
+				}
+			}
+			#recent-div {
+				margin-top: 24px;
+			}
+			.ivu-form-item {
+				margin-bottom: 12px;
+				&-label-top {
+					padding: 0 0 5px;
+				}
+				p {
+					font-size: 14px;
+				}
+			}
+		}
+	}
+}
+
+.top-bar-buttons {
+	height: 50px;
+}
+.detail-content-file-side-block {
+		border-bottom: 1px solid #ccc;
+}
+
+@media screen and (max-width: 767px) {
+	::-webkit-scrollbar {
+		display: none;
+	}
+	#detail {
+		&-operation-bar {
+			background-color: rgba(0, 0, 0, 0.75);
+		}
+		&-content {
+			padding-top: 50px;
+			&-file-display {
+				position: relative;
+				width: 100%;
+				padding: 20px;
+				&-card-unknown {
+					padding: 20px;
+				}
+				&-card-image {
+					padding: 20px;
+				}
+				&-card-pdf {
+					padding: 20px;
+				}
+				&-card-audio {
+					padding: 20px;
+				}
+			}
+			&-file-side {
+				position: relative;
+				width: calc(~'100% - 40px');
+				padding: 20px;
+				margin-bottom: 20px;
+				background-color: #eee;
+				border-radius: 5px;
+			}
+		}
+	}
+	.detail-content-file-side-block {
+			margin: 24px 0 12px;
+			border-color: #fff;
+	}
+	.ivu-drawer {
+		width: 90% !important;
+		max-width: 360px !important;
+		min-width: 280px !important;
+	}
+}
+@media screen and (max-width: 1199px) and (min-width: 768px) {
+	::-webkit-scrollbar {
+		display: none;
+	}
+	#detail {
+		&-operation-bar {
+			background-color: rgba(0, 0, 0, 0.75);
+		}
+		&-content {
+			padding-top: 50px;
+			&-file-display {
+				position: relative;
+				width: 100%;
+				padding: 50px;
+				&-card-unknown {
+					padding: 30px;
+				}
+				&-card-image {
+					padding: 30px;
+				}
+				&-card-pdf {
+					padding: 30px;
+				}
+				&-card-audio {
+					padding: 30px;
+				}
+			}
+			&-file-side {
+				position: relative;
+				width: calc(~'100% - 100px');
+				padding: 20px;
+				margin-bottom: 50px;
+				background-color: #f0f0f0;
+				box-shadow: inset 1px 2px 0 rgba(0,0,0,.05), 0 2px 0 rgba(0,0,0,.1);
+				border-radius: 5px;
+			}
+		}
+	}
+	.detail-content-file-side-block {
+			margin: 24px 0 12px;
+			border-color: #fff;
+	}
+	.ivu-drawer {
+		width: 90% !important;
+		max-width: 640px !important;
+	}
+}
+@media screen	and (min-width: 1200px) {
+	#detail {
+		&-operation-bar {
+			background-color: rgba(0, 0, 0, 0.75);
+		}
+		&-content {
+			&-file-display {
+				position: fixed;
+				top: 50px;
+				left: 0px;
+				bottom: 0px;
+				right: 25%;
+				padding: 0 5%;
+				&-container {
+					padding: 50px;
+				}
+				&-card-unknown {
+					padding: 50px;
+				}
+				&-card-image {
+					padding: 50px;
+				}
+				&-card-pdf {
+					background-color: #444;
+					padding: 50px 50px 20px;
+					color: #fff;
+				}
+				&-card-audio {
+					padding: 30px 50px;
+					background-color: #000;
+				}
+			}
+			&-file-side {
+				position: fixed;
+				top: 50px;
+				left: 75%;
+				bottom: 0px;
+				padding: 2% calc(~'2% - 9px');
+				background-color: #fff;
+				border-left: 1px solid #ccc;
+				overflow: auto;
+			}
+		}
+	}
+	.detail-content-file-side-block {
+			margin: 24px 12px 12px 0;
+	}
+	.ivu-drawer {
+		width: 25% !important;
+		max-width: 640px !important;
+	}
+}

@@ -1,0 +1,53 @@
+.ivu-upload {
+	width: 100%;
+}
+.file-uploader {
+	&-top-margin {
+		height: 20px;
+	}
+	&-top-area {
+		width: 100%;
+		height: 180px;
+		margin-bottom: 20px;
+		.upload-text {
+			font-size: 24px;
+		}
+		&-upload {
+			height: 180px;
+			&-icon {
+				color: #2d8cf0;
+			}
+		}
+		&-progress {
+			height: 100%;
+			padding: 20px;
+			border: 1px dashed #2d8cf0;
+			.progress {
+				margin-bottom: 20px;
+			}
+			.uploading-animation {
+				width: 24px;
+				height: auto;
+				display: inline-block;
+			}
+		}
+		&-uploaded {
+			height: 100%;
+			padding: 20px;
+			border: 1px dashed #dcdee2;
+		}
+	}
+	&-footer {
+		margin-bottom: 10px;
+	}
+}
+
+@media screen and (max-width: 414px) {
+	.uploading-animation {
+		width: 12px !important;
+	}
+	.upload-text {
+		text-overflow: ellipsis;
+		font-size: 12px !important;
+	}
+}

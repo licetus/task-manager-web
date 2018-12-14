@@ -1,0 +1,6 @@
+src/router.js
+build/vendors.js
+build/env.js
+build/webpack.base.config.js
+build/webpack.dev.config.js
+build/webpack.prod.config.js

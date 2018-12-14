@@ -1,0 +1,26 @@
+import env from './env'
+
+const config = {
+	env,
+	localHost: '//192.168.31.240/',
+	localApiHost: '//192.168.31.240/api/v0',
+	serverHost: '//139.219.11.250:8080/',
+	serverApiHost: '//139.219.11.250:8080/api/v0',
+	httpRequestInterval: 5000,
+	uploadInterval: 3600000,
+
+	oauth: {
+		aad: {
+			host: 'https://login.partner.microsoftonline.cn/common/oauth2',
+			clientId: '38875194-25ae-4ef2-8823-667c96a520d5',
+			responseType: 'id_token',
+			localRedirectUri: 'http://localhost:8080/login',
+			serverRedirectUri: 'http://139.219.11.250/login',
+			scope: 'openid',
+			responseMode: 'fragment',
+			nonce: '12345',
+		},
+	},
+}
+
+export default config

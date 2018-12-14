@@ -1,0 +1,14 @@
+.idea
+.idea/
+.DS_Store
+node_modules/
+.project
+dist
+dist/*
+build/*.tmp
+build/env.js
+build/config.js
+npm-debug.log
+
+index_prod.html
+deploy.sh
