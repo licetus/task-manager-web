@@ -1,12 +1,12 @@
 export default class ViewTemplate {
-	constructor(fileName) {
+	constructor(fileName, type) {
 		this.buffer =
 `<style>
 	@import './${fileName}.less';
 </style>
 
 <template>
-	<p>This is ${fileName} page.</p>
+	<p>This is ${fileName} view.</p>
 </template>
 
 <script>
@@ -19,11 +19,10 @@ export default {
 	computed: {
 	},
 	methods: {
-		initPage() {
-		},
+		${type === 'public' ? '' : 'initPage() {\n\t},'}
 	},
 	mounted() {
-		this.initPage()
+		${type === 'public' ? '' : 'this.initPage()'}
 	},
 }
 </script>
