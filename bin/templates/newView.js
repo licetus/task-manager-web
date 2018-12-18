@@ -1,4 +1,4 @@
-export default class ViewTemplate {
+export class ViewTemplate {
 	constructor(fileName, type) {
 		this.buffer =
 `<style>
@@ -19,7 +19,7 @@ export default {
 	computed: {
 	},
 	methods: {
-		${type === 'public' ? '' : 'initPage() {\n\t},'}
+		${type === 'public' ? '' : 'initPage() {\n\t\t},'}
 	},
 	mounted() {
 		${type === 'public' ? '' : 'this.initPage()'}
@@ -28,4 +28,8 @@ export default {
 </script>
 `
 	}
+}
+
+export class PublicIndex {
+	
 }
