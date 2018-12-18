@@ -5,7 +5,6 @@ import PDFReader from './pdf-reader'
 import ImageDisplayer from './image-displayer'
 import ProgressBar from './progress-bar'
 
-
 const Public = {
 	install(Vue) {
 		Vue.component('InfoCard', InfoCard)
