@@ -3,7 +3,7 @@
 import fs from 'fs'
 import mkdirp from 'mkdirp'
 import commander from 'commander'
-import ViewTemplate from './templates/newView'
+import { ViewTemplate, PublicComponentIndex } from './templates/newView'
 
 commander
 	.version('0.1.0')
@@ -34,17 +34,41 @@ class ViewData {
 		}
 	}
 	mkfile() {
+		this.mkVue()
+		this.mkLess()
+		if (this.type === 'public') {
+			this.mkIndex()
+			this.addComponent()
+		}
+		console.log(`add new view [${this.name}] in <${this.path}> successfully.`)
+	}
+
+	mkVue() {
 		const vuePath = `${this.path}/${this.name}.vue`
 		fs.open(vuePath, 'w', (err, fd) => {
 			if (err) throw err
 			const { buffer } = new ViewTemplate(this.name, this.type)
 			fs.write(fd, buffer, 0, buffer.length, 0, (err, written, buffer) => {})
 		})
+	}
+
+	mkLess() {
 		const lessPath = `${this.path}/${this.name}.less`
 		fs.open(lessPath, 'w', (err, fd) => {
 			if (err) throw err
 		})
-		console.log(`add new view [${this.name}] in <${this.path}> successfully.`)
+	}
+
+	mkIndex() {
+		const indexPath = `${this.path}/index.js`
+		fs.open(indexPath, 'w', (err, fd) => {
+			if (err) throw err
+			const { buffer } = new PublicComponentIndex(this.name)
+			fs.write(fd, buffer, 0, buffer.length, 0, (err, written, buffer) => {})
+		})
+	}
+
+	addComponent() {
 	}
 }
 

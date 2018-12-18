@@ -1,3 +1,5 @@
+import upperCamelCase from 'uppercamelcase'
+
 export class ViewTemplate {
 	constructor(fileName, type) {
 		this.buffer =
@@ -12,24 +14,29 @@ export class ViewTemplate {
 <script>
 
 export default {
-	data() {
+${type === 'public' ? `\tname: '${fileName}',\n\tprops: {\n\t},\n` : ''}	data() {
 		return {
 		}
 	},
 	computed: {
 	},
 	methods: {
-		${type === 'public' ? '' : 'initPage() {\n\t\t},'}
-	},
+${type === 'public' ? '' : '\t\tinitPage() {\n\t\t},\n'}\t},
 	mounted() {
-		${type === 'public' ? '' : 'this.initPage()'}
-	},
+${type === 'public' ? '' : '\t\tthis.initPage()\n'}\t},
 }
 </script>
 `
 	}
 }
 
-export class PublicIndex {
-	
+export class PublicComponentIndex {
+	constructor(fileName) {
+		const upperName = upperCamelCase(fileName)
+		this.buffer =
+`import ${upperName} from './${fileName}.vue'
+
+export default ${upperName}
+`
+	}
 }
