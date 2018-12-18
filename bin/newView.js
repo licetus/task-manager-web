@@ -3,8 +3,7 @@
 import fs from 'fs'
 import mkdirp from 'mkdirp'
 import commander from 'commander'
-import upperCamelCase from 'uppercamelcase'
-import { ViewTemplate, PublicComponentIndex } from './templates/newView'
+import { ViewTemplate, PublicComponent } from './templates/newView'
 
 commander
 	.version('0.1.0')
@@ -68,7 +67,7 @@ class ViewData {
 		const indexPath = `${this.path}/index.js`
 		fs.open(indexPath, 'w', (err, fd) => {
 			if (err) throw err
-			const { buffer } = new PublicComponentIndex(this.name)
+			const buffer = new PublicComponent(this.name).componentBuffer
 			fs.write(fd, buffer, 0, buffer.length, 0, (err, written, buffer) => {})
 		})
 	}
@@ -77,11 +76,7 @@ class ViewData {
 		const indexPath = `${basePath}/public/index.js`
 		fs.readFile(indexPath, 'utf-8', (err, data) => {
 			if (err) throw err
-			const upperName = upperCamelCase(this.name)
-			const importString = `$1\nimport ${upperName} from './${this.name}'\n$2`
-			const registerString = `$1\n\t\tVue.component('${upperName}', ${upperName})\n$2`
-			const regexpOfImport = /(')\n(\nconst Public = {)/
-			const regexpOfRegister = /(\))\n(\t},\n}\n\nexport default Public)/
+			const { importString, registerString, regexpOfImport, regexpOfRegister } = new PublicComponent(this.name)
 			const buffer = data.replace(regexpOfImport, importString).replace(regexpOfRegister, registerString)
 			fs.open(indexPath, 'w', (err, fd) => {
 				if (err) throw err

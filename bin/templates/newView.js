@@ -30,13 +30,17 @@ ${type === 'public' ? '' : '\t\tthis.initPage()\n'}\t},
 	}
 }
 
-export class PublicComponentIndex {
+export class PublicComponent {
 	constructor(fileName) {
 		const upperName = upperCamelCase(fileName)
-		this.buffer =
+		this.componentBuffer =
 `import ${upperName} from './${fileName}.vue'
 
 export default ${upperName}
 `
+		this.importString = `$1\nimport ${upperName} from './${fileName}'\n$2`
+		this.registerString = `$1\n\t\tVue.component('${upperName}', ${upperName})\n$2`
+		this.regexpOfImport = /(')\n(\nconst Public = {)/
+		this.regexpOfRegister = /(\))\n(\t},\n}\n\nexport default Public)/
 	}
 }
